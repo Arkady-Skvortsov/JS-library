@@ -1,0 +1,91 @@
+class Calculator {
+  constructor() {}
+
+  sum(x, y) {
+    return (x += y);
+  }
+
+  minus(x, y) {
+    return (x -= y);
+  }
+
+  share(x, y) {
+    return x / y;
+  }
+
+  multiply(x, y) {
+    return x * y;
+  }
+
+  sqrt(x) {
+    return Math.sqrt(x);
+  }
+
+  square(x) {
+    return x ** 2;
+  }
+
+  squarePower(x, y) {
+    return x ** y;
+  }
+
+  drobi(x) {
+    return 1 / x;
+  }
+
+  sin(x) {
+    return Math.sin(x);
+  }
+
+  cos(x) {
+    return Math.cos(x);
+  }
+
+  pi() {
+    return Math.PI();
+  }
+
+  round(x) {
+    return Math.round(x);
+  }
+
+  tan(x) {
+    return Math.tan(x);
+  }
+
+  percent(x) {
+    return x / 10 + "%";
+  }
+
+  arcCos(x) {
+    return Math.acos(x);
+  }
+
+  arcSin(x) {
+    return Math.asin(x);
+  }
+
+  arcTan(x) {
+    return Math.atan(x);
+  }
+
+  cosOncePower(x) {
+    return Math.cos(x) ** -1;
+  }
+
+  sinOncePower(x) {
+    return Math.sin(x) ** -1;
+  }
+
+  ceil(x) {
+    return Math.ceil(x);
+  }
+
+  tanOncePower(x) {
+    return Math.tan(x) ** -1;
+  }
+}
+
+let calculator = new Calculator();
+
+module.exports.calculator = calculator;
