@@ -74,6 +74,10 @@
 
 **calc.pi()** // 3.14
 
+# e()
+
+**calc.e()** // 2.7
+
 # round()
 
 **calc.round(x)** //5.6 -> 6
@@ -116,4 +120,4 @@
 
 # Install
 
-**npm i JS-calculator**
+**npm i mywontestwithjavascript**
