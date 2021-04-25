@@ -42,7 +42,11 @@ class Calculator {
   }
 
   pi() {
-    return Math.PI();
+    return Math.PI;
+  }
+
+  e() {
+    return Math.E;
   }
 
   round(x) {
@@ -53,8 +57,12 @@ class Calculator {
     return Math.tan(x);
   }
 
+  ctg(x) {
+    return 1 / Math.tan(x);
+  }
+
   percent(x) {
-    return x / 10 + "%";
+    return x / 10;
   }
 
   arcCos(x) {
@@ -69,23 +77,37 @@ class Calculator {
     return Math.atan(x);
   }
 
-  cosOncePower(x) {
+  arcCtg(x) {
+    return Math.PI / 2 - Math.atan(x);
+  }
+
+  cosMinusOncePower(x) {
     return Math.cos(x) ** -1;
   }
 
-  sinOncePower(x) {
+  sinMinusOncePower(x) {
     return Math.sin(x) ** -1;
+  }
+
+  ctgMinusOncePower(x) {
+    return (1 / Math.tan(x)) ** -1;
   }
 
   ceil(x) {
     return Math.ceil(x);
   }
 
-  tanOncePower(x) {
+  floor(x) {
+    return Math.floor(x);
+  }
+
+  tanMinusOncePower(x) {
     return Math.tan(x) ** -1;
   }
 }
 
 let calculator = new Calculator();
 
-module.exports.calculator = calculator;
+console.log(calculator.percent(45));
+
+module.exports = calculator;
