@@ -4,7 +4,7 @@
 
 # Usage code:
 
-**let calc = require("js-calculator")**
+**let calc = require("myowntestwithjavascript")**
 
 **console.log(calc.sum(1, 100))** //101
 
