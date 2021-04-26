@@ -34,6 +34,10 @@
 
 **calc.multiply(x, y)** // x \* y
 
+# factorial()
+
+**calc.factorial(x)** // !5 = 5 _ 4 _ 3 _ 2 _ 1 = 120
+
 # sqrt()
 
 **calc.sqrt(x)** // sqrt 4 = 2
@@ -78,6 +82,22 @@
 
 **calc.e()** // 2.7
 
+# ln()
+
+**calc.ln(x)** // ln()
+
+# log()
+
+**calc.log(x)** // log()
+
+# trunc()
+
+**calc.trunc(x)** // 234.3259023234 -> 234
+
+# rand()
+
+**calc.rand(x)** // random number - 0.20002394024
+
 # round()
 
 **calc.round(x)** //5.6 -> 6
@@ -117,6 +137,14 @@
 # ctgPower()
 
 **calc.ctgPower(x, y)** // 30^2deg
+
+# floor()
+
+**calculator.floor(x)** // 25.8 -> 25
+
+# ceil()
+
+**calculator.ceil(x)** // 25.5 -> 26
 
 # Install
 

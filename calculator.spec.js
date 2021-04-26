@@ -1,6 +1,3 @@
-//import { calculator } from "./calculator";
-const { TestScheduler } = require("@jest/core");
-const { squarePower, sinMinusOncePower } = require("./calculator");
 let calculator = require("./calculator");
 
 describe("Test a calculator class", () => {
@@ -11,6 +8,7 @@ describe("Test a calculator class", () => {
   let minus;
   let share;
   let multiply;
+  let factorial;
   let sqrt;
   let square;
   let squarePower;
@@ -19,6 +17,8 @@ describe("Test a calculator class", () => {
   let cos;
   let pi;
   let e;
+  let ln;
+  let trunc;
   let round;
   let tan;
   let ctg;
@@ -31,6 +31,10 @@ describe("Test a calculator class", () => {
   let cosMinusOncePower;
   let sinMinusOncePower;
   let tanMinusOncePower;
+  let cosPower;
+  let sinPower;
+  let tanPower;
+  let ctgPower;
   let floor;
   let ceil;
 
@@ -40,6 +44,7 @@ describe("Test a calculator class", () => {
     minus = jest.fn((x, y) => calculator.minus(x, y));
     share = jest.fn((x, y) => calculator.share(x, y));
     multiply = jest.fn((x, y) => calculator.multiply(x, y));
+    factorial = jest.fn((x) => calculator.factorial(x));
     sqrt = jest.fn((x) => calculator.sqrt(x));
     square = jest.fn((x) => calculator.square(x));
     squarePower = jest.fn((x, y) => calculator.squarePower(x, y));
@@ -48,6 +53,8 @@ describe("Test a calculator class", () => {
     cos = jest.fn((x) => calculator.cos(x));
     pi = jest.fn(() => calculator.pi());
     e = jest.fn(() => calculator.e());
+    ln = jest.fn((x) => calculator.ln(x));
+    trunc = jest.fn((x) => calculator.trunc(x));
     round = jest.fn((x) => calculator.round(x));
     tan = jest.fn((x) => calculator.tan(x));
     ctg = jest.fn((x) => calculator.ctg(x));
@@ -60,6 +67,10 @@ describe("Test a calculator class", () => {
     sinMinusOncePower = jest.fn((x) => calculator.sinMinusOncePower(x));
     tanMinusOncePower = jest.fn((x) => calculator.tanMinusOncePower(x));
     ctgMinusOncePower = jest.fn((x) => calculator.ctgMinusOncePower(x));
+    cosPower = jest.fn((x, y) => calculator.cosPower(x, y));
+    sinPower = jest.fn((x, y) => calculator.sinPower(x, y));
+    tanPower = jest.fn((x, y) => calculator.tanPower(x, y));
+    ctgPower = jest.fn((x, y) => calculator.ctgPower(x, y));
     floor = jest.fn((x) => calculator.floor(x));
     ceil = jest.fn((x) => calculator.ceil(x));
 
@@ -72,7 +83,7 @@ describe("Test a calculator class", () => {
 
       expect(func.mock.calls.length).not.toBeGreaterThan(1);
 
-      expect(func.mock.results[0].value).toEqual(result);
+      expect(+func.mock.results[0].value.toFixed(2)).toEqual(result);
     });
   });
 
@@ -90,6 +101,16 @@ describe("Test a calculator class", () => {
 
   test("test a multiply() method", () => {
     testFunc(multiply, 5, 5, 25);
+  });
+
+  test("test a factorial() method", () => {
+    factorial(5);
+
+    expect(factorial).toBeCalled();
+
+    expect(factorial.mock.calls.length).not.toBeGreaterThan(1);
+
+    expect(factorial.mock.results[0].value).toEqual(120);
   });
 
   test("test a sqrt() method", () => {
@@ -131,7 +152,7 @@ describe("Test a calculator class", () => {
 
     expect(sin.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(sin.mock.results[0].value.toFixed(2)).toEqual("-0.99");
+    expect(+sin.mock.results[0].value.toFixed(2)).toEqual(-0.99);
   });
 
   test("test a cos() method", () => {
@@ -141,7 +162,7 @@ describe("Test a calculator class", () => {
 
     expect(cos.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(cos.mock.results[0].value.toFixed(2)).toEqual("0.15");
+    expect(+cos.mock.results[0].value.toFixed(2)).toEqual(0.15);
   });
 
   test("test a ctg() method", () => {
@@ -151,7 +172,7 @@ describe("Test a calculator class", () => {
 
     expect(ctg.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(ctg.mock.results[0].value.toFixed(2)).toEqual("0.62");
+    expect(+ctg.mock.results[0].value.toFixed(2)).toEqual(0.62);
   });
 
   test("test a pi() method", () => {
@@ -161,7 +182,7 @@ describe("Test a calculator class", () => {
 
     expect(pi.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(pi.mock.results[0].value.toFixed(2)).toEqual("3.14");
+    expect(+pi.mock.results[0].value.toFixed(2)).toEqual(3.14);
   });
 
   test("test a e() method", () => {
@@ -171,7 +192,27 @@ describe("Test a calculator class", () => {
 
     expect(e.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(e.mock.results[0].value.toFixed(1)).toEqual("2.7");
+    expect(+e.mock.results[0].value.toFixed(1)).toEqual(2.7);
+  });
+
+  test("test a ln() method", () => {
+    ln(100);
+
+    expect(ln).toBeCalled();
+
+    expect(ln.mock.calls.length).toBe(1);
+
+    expect(ln.mock.results[0].value).toEqual(2);
+  });
+
+  test("test a trunc() method", () => {
+    trunc(255.091264758303);
+
+    expect(trunc).toBeCalled();
+
+    expect(trunc.mock.calls.length).not.toBeGreaterThan(1);
+
+    expect(trunc.mock.results[0].value).toEqual(255);
   });
 
   test("test a round() method", () => {
@@ -191,7 +232,7 @@ describe("Test a calculator class", () => {
 
     expect(tan.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(tan.mock.results[0].value.toFixed(2)).toEqual("1.62");
+    expect(+tan.mock.results[0].value.toFixed(2)).toEqual(1.62);
   });
 
   test("test a percent() method", () => {
@@ -211,7 +252,7 @@ describe("Test a calculator class", () => {
 
     expect(arcCos.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(arcCos.mock.results[0].value.toFixed(2)).toEqual("1.57");
+    expect(+arcCos.mock.results[0].value.toFixed(2)).toEqual(1.57);
   });
 
   test("test a arcSin() method", () => {
@@ -241,7 +282,7 @@ describe("Test a calculator class", () => {
 
     expect(arcCtg.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(arcCtg.mock.results[0].value.toFixed(2)).toEqual("0.01");
+    expect(+arcCtg.mock.results[0].value.toFixed(2)).toEqual(0.01);
   });
 
   test("test a cosMinusOncePower() method", () => {
@@ -251,7 +292,7 @@ describe("Test a calculator class", () => {
 
     expect(cosMinusOncePower.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(cosMinusOncePower.mock.results[0].value.toFixed(2)).toEqual("-2.23");
+    expect(+cosMinusOncePower.mock.results[0].value.toFixed(2)).toEqual(-2.23);
   });
 
   test("test a sinMinusOncePower() method", () => {
@@ -261,7 +302,7 @@ describe("Test a calculator class", () => {
 
     expect(sinMinusOncePower.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(sinMinusOncePower.mock.results[0].value.toFixed(0)).toEqual("1");
+    expect(+sinMinusOncePower.mock.results[0].value.toFixed(0)).toEqual(1);
   });
 
   test("test a tanMinusOncePower() method", () => {
@@ -271,7 +312,7 @@ describe("Test a calculator class", () => {
 
     expect(tanMinusOncePower.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(tanMinusOncePower.mock.results[0].value.toFixed(2)).toEqual("0.62");
+    expect(+tanMinusOncePower.mock.results[0].value.toFixed(2)).toEqual(0.62);
   });
 
   test("test a ctgMinusOncePower() method", () => {
@@ -281,7 +322,23 @@ describe("Test a calculator class", () => {
 
     expect(ctgMinusOncePower.mock.calls.length).not.toBeGreaterThan(1);
 
-    expect(ctgMinusOncePower.mock.results[0].value.toFixed(0)).toEqual("-2");
+    expect(+ctgMinusOncePower.mock.results[0].value.toFixed(0)).toEqual(-2);
+  });
+
+  test("test a cosPower() method", () => {
+    testFunc(cosPower, 90, 2, 0.2);
+  });
+
+  test("test a tanPower() method", () => {
+    testFunc(tanPower, 90, 2, 3.98);
+  });
+
+  test("test a ctgPower() method", () => {
+    testFunc(ctgPower, 45, 2, 0.38);
+  });
+
+  test("test a sinPower() method", () => {
+    testFunc(sinPower, 90, 2, 0.8);
   });
 
   test("test a ceil() method", () => {

@@ -49,6 +49,14 @@ class Calculator {
     return Math.E;
   }
 
+  factorial(x) {
+    if (x < 0) return;
+
+    if (x === 1) return x;
+
+    return x * this.factorial(x - 1);
+  }
+
   round(x) {
     return Math.round(x);
   }
@@ -93,6 +101,18 @@ class Calculator {
     return (1 / Math.tan(x)) ** -1;
   }
 
+  ln(x) {
+    return Math.log10(x);
+  }
+
+  rand(x) {
+    return Math.random(x);
+  }
+
+  trunc(x) {
+    return Math.trunc(x);
+  }
+
   ceil(x) {
     return Math.ceil(x);
   }
@@ -101,13 +121,27 @@ class Calculator {
     return Math.floor(x);
   }
 
+  cosPower(x, y) {
+    return Math.cos(x) ** y;
+  }
+
+  sinPower(x, y) {
+    return Math.sin(x) ** y;
+  }
+
+  tanPower(x, y) {
+    return Math.tan(x) ** y;
+  }
+
+  ctgPower(x, y) {
+    return (1 / Math.tan(x)) ** y;
+  }
+
   tanMinusOncePower(x) {
     return Math.tan(x) ** -1;
   }
 }
 
 let calculator = new Calculator();
-
-console.log(calculator.percent(45));
 
 module.exports = calculator;
